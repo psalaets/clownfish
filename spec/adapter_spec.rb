@@ -7,8 +7,8 @@ module Clownfish
     end
 
     it "returns options from delegate" do
-      delegate = DummyClownfish.new
-      delegate.options = {:name => 'bob'}
+      delegate = double('delegate')
+      delegate.stub(:options) {{:name => 'bob'}}
 
       adapter = Adapter.new(delegate)
 
@@ -16,15 +16,15 @@ module Clownfish
     end
 
     it "returns empty options if delegate has none" do
-      delegate = DummyClownfish.new
-      delegate.options = nil
+      delegate = double('delegate')
+      delegate.stub(:options) {nil}
 
       adapter = Adapter.new(delegate)
 
       adapter.options.should eq({})
     end
 
-    it "returns empty options if delegate doesn't care about options" do
+    it "returns empty options if delegate doesn't support options" do
       # No options method
       delegate = Object.new
 
@@ -32,5 +32,6 @@ module Clownfish
 
       adapter.options.should eq({})
     end
-  end
-end
+
+  end # end of describe Adapter
+end # end of Clownfish module

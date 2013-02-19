@@ -11,9 +11,3 @@ RSpec.configure do |config|
   #     --seed 1234
   config.order = 'random'
 end
-
-module Clownfish
-  class DummyClownfish
-    attr_accessor :options
-  end
-end
