@@ -33,9 +33,11 @@ Anemone.crawl_with_clownfish(start_url, clownfish)
 
 A clownfish is an object that has one or more of the following instance methods:
 
+Note: [Anemone RDocs](http://anemone.rubyforge.org/doc/index.html)
+
 ### options
 
-Returns a `Hash` of `Symbol` to values. This is forwarded to the second argument of `Anemone.crawl`.
+Returns a `Hash` of `Symbol` to values. This is forwarded as the second argument to `Anemone.crawl`.
 
 ### after_crawl
 
