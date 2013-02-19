@@ -13,6 +13,7 @@ RSpec.configure do |config|
 end
 
 module Clownfish
+  # Fake Anemone::Core to help with tests.
   class FakeAnemone
     attr_reader :last_focus_crawl_links
     attr_reader :last_skip_links_like_regexes
