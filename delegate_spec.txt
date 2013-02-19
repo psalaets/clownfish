@@ -4,7 +4,7 @@ A clownfish can have
 
 #after_crawl that takes a Anemone::PageStore
 
-#focus_crawl that takes a Anemone#Page and returns links to crawl
+#focus_crawl that takes a Anemone::Page and returns links to crawl
 
 #on_every_page that takes a Anemone::Page
 
