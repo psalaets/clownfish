@@ -97,6 +97,44 @@ module Clownfish
 
         @anemone.last_focus_crawl_links.should eq([])
       end
+
+      it "ignores focus_crawl when delegate doesn't support it" do
+        delegate = Object.new
+
+        adapter = Adapter.new(delegate)
+
+        adapter.hook_into_anemone(@anemone)
+      end
+
+      it "relays skip_links_like regex when delegate returns one" do
+        delegate = double('delegate')
+        delegate.stub(:skip_links_like) {/a/}
+
+        adapter = Adapter.new(delegate)
+
+        adapter.hook_into_anemone(@anemone)
+
+        @anemone.last_skip_links_like_regexes.should eq([/a/])
+      end
+
+      it "relays skip_links_like regexes when delegate returns many" do
+        delegate = double('delegate')
+        delegate.stub(:skip_links_like) {[/a/, /b/]}
+
+        adapter = Adapter.new(delegate)
+
+        adapter.hook_into_anemone(@anemone)
+
+        @anemone.last_skip_links_like_regexes.should eq([/a/, /b/])
+      end
+
+      it "ignores skip_links_like when not supported" do
+        delegate = Object.new
+
+        adapter = Adapter.new(delegate)
+
+        adapter.hook_into_anemone(@anemone)
+      end
     end # end of hooking into Anemone
   end # end of describe Adapter
 end # end of Clownfish module

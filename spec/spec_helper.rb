@@ -15,6 +15,7 @@ end
 module Clownfish
   class FakeAnemone
     attr_reader :last_focus_crawl_links
+    attr_reader :last_skip_links_like_regexes
 
     def initialize(page_store, page1, page2)
       @page_store = page_store
@@ -33,6 +34,10 @@ module Clownfish
 
     def focus_crawl
       @last_focus_crawl_links = yield(@page1)
+    end
+
+    def skip_links_like(regexes)
+      @last_skip_links_like_regexes = regexes
     end
   end
 end

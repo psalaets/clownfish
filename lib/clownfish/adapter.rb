@@ -16,6 +16,7 @@ module Clownfish
       wire_up_after_crawl(anemone)
       wire_up_on_every_page(anemone)
       wire_up_focus_crawl(anemone)
+      relay_skip_links_like(anemone)
     end
 
     private
@@ -36,6 +37,13 @@ module Clownfish
       anemone.focus_crawl do |page|
         @delegate.focus_crawl(page) || []
       end if @delegate.respond_to?(:focus_crawl)
+    end
+
+    def relay_skip_links_like(anemone)
+      if @delegate.respond_to?(:skip_links_like)
+        regexes = @delegate.skip_links_like
+        anemone.skip_links_like([regexes].flatten)
+      end
     end
   end
 end
