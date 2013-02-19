@@ -1,0 +1,3 @@
+module Clownfish
+  VERSION = "0.0.1"
+end
