@@ -5,5 +5,23 @@ module Clownfish
     it "doesn't accept nil delegate" do
       expect { Adapter.new(nil) }.to raise_error(ArgumentError)
     end
+
+    it "returns options from delegate" do
+      delegate = DummyClownfish.new
+      delegate.options = {:name => 'bob'}
+
+      adapter = Adapter.new(delegate)
+
+      adapter.options.should eq({:name => 'bob'})
+    end
+
+    it "returns empty options if delegate has none" do
+      delegate = DummyClownfish.new
+      delegate.options = nil
+
+      adapter = Adapter.new(delegate)
+
+      adapter.options.should eq({})
+    end
   end
 end
