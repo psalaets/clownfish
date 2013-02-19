@@ -9,9 +9,7 @@ module Clownfish
     end
 
     def options
-      opts = {}
-      opts.merge!(@deledate.options) if @deledate.options
-      opts
+      (@deledate.respond_to?(:options) && @deledate.options) || {}
     end
   end
 end

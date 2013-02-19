@@ -23,5 +23,14 @@ module Clownfish
 
       adapter.options.should eq({})
     end
+
+    it "returns empty options if delegate doesn't care about options" do
+      # No options method
+      delegate = Object.new
+
+      adapter = Adapter.new(delegate)
+
+      adapter.options.should eq({})
+    end
   end
 end
