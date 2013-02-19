@@ -8,9 +8,9 @@ Gem::Specification.new do |gem|
   gem.version       = Clownfish::VERSION
   gem.authors       = ["Paul Salaets"]
   gem.email         = ["psalaets@gmail.com"]
-  gem.description   = %q{TODO: Write a gem description}
-  gem.summary       = %q{TODO: Write a gem summary}
-  gem.homepage      = ""
+  gem.description   = %q{Anemone helper}
+  gem.summary       = %q{Anemone helper}
+  gem.homepage      = "https://github.com/psalaets/clownfish"
 
   gem.files         = `git ls-files`.split($/)
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})

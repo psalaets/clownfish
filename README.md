@@ -1,6 +1,7 @@
 # Clownfish
 
-TODO: Write a gem description
+Helper gem for [Anemone](http://anemone.rubyforge.org/).  Aids reusability of
+Anemone driver code.
 
 ## Installation
 
