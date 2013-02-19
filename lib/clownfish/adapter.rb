@@ -5,11 +5,11 @@ module Clownfish
     # clownfish - Object that conforms to clownfish spec.
     def initialize(clownfish)
       raise ArgumentError, "clownfish cannot be nil" if clownfish.nil?
-      @deledate = clownfish
+      @delegate = clownfish
     end
 
     def options
-      (@deledate.respond_to?(:options) && @deledate.options) || {}
+      (@delegate.respond_to?(:options) && @delegate.options) || {}
     end
   end
 end
