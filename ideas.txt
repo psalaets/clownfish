@@ -1,0 +1,8 @@
+syntax ideas:
+
+Anemone.crawl('url', :with => clownfish)
+
+Anemone.crawl('url').with(clownfish)
+
+Anemone.crawl_with_clownfish('url', clownfish)
+
