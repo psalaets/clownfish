@@ -1,0 +1,14 @@
+A clownfish can have
+
+#options that returns hash of options meant for Anemone.crawl
+
+#after_crawl that takes a Anemone::PageStore
+
+#focus_crawl that takes a Anemone#Page and returns links to crawl
+
+#on_every_page that takes a Anemone::Page
+
+#on_pages_like that returns 1..many regexs and a proc to execute when
+page matches those
+
+#skip_links_like that returns 1..many regexes
