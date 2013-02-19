@@ -35,18 +35,10 @@ module Clownfish
 
     context "hooking into Anemone" do
       before :each do
-        @anemone = double('Anemone')
-
         @page_store = Object.new
-        @anemone.stub(:after_crawl) do |&block|
-          block.call(@page_store)
-        end
-
         @page1, @page2 = Object.new, Object.new
-        @anemone.stub(:on_every_page) do |&block|
-          block.call(@page1)
-          block.call(@page2)
-        end
+
+        @anemone = FakeAnemone.new(@page_store, @page1, @page2)
       end
 
       it "wires up after_crawl when delegate supports it" do
@@ -82,6 +74,28 @@ module Clownfish
         adapter = Adapter.new(delegate)
 
         adapter.hook_into_anemone(@anemone)
+      end
+
+      it "wires up focus_crawl when delegate supports it" do
+        delegate = double('delegate')
+        delegate.should_receive(:focus_crawl).with(@page1) {['url1']}.once
+
+        adapter = Adapter.new(delegate)
+
+        adapter.hook_into_anemone(@anemone)
+
+        @anemone.last_focus_crawl_links.should eq(['url1'])
+      end
+
+      it "focuses on no links when delegate doesn't focus on any" do
+        delegate = double('delegate')
+        delegate.should_receive(:focus_crawl).with(@page1) {nil}
+
+        adapter = Adapter.new(delegate)
+
+        adapter.hook_into_anemone(@anemone)
+
+        @anemone.last_focus_crawl_links.should eq([])
       end
     end # end of hooking into Anemone
   end # end of describe Adapter

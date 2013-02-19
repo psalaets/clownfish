@@ -11,3 +11,28 @@ RSpec.configure do |config|
   #     --seed 1234
   config.order = 'random'
 end
+
+module Clownfish
+  class FakeAnemone
+    attr_reader :last_focus_crawl_links
+
+    def initialize(page_store, page1, page2)
+      @page_store = page_store
+      @page1 = page1
+      @page2 = page2
+    end
+
+    def after_crawl
+      yield(@page_store)
+    end
+
+    def on_every_page
+      yield(@page1)
+      yield(@page2)
+    end
+
+    def focus_crawl
+      @last_focus_crawl_links = yield(@page1)
+    end
+  end
+end
