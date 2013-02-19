@@ -36,12 +36,12 @@ A clownfish is an object that has one or more of the following instance methods:
 Note: [Anemone RDocs](http://anemone.rubyforge.org/doc/index.html)
 
 Method|Arguments|Returns|Invoked|Note
-------|---------|-------|-------
-options| - |`Hash` of `Symbol` to values|Once before crawl|Return value is forwarded as the second argument to `Anemone.crawl`.
-skip_links_like| - |Single `Regexp` or `Array` of `Regexp`|Once before crawl|Urls matching any of these will not be crawled.
-on_every_page|`Anemone::Page`| - |Once per page|
-focus_crawl|`Anemone::Page`|Links on that page that should be crawled|Once per page|
-after_crawl|`Anemone::PageStore`| - |Once after crawl is done|
+------|---------|-------|-------|---------
+options| - |Hash of Symbol to values|Once before crawl|Return value is forwarded as the second argument to Anemone.crawl.
+skip_links_like| - |Single Regexp or Array of Regexp|Once before crawl|Urls matching any of these will not be crawled.
+on_every_page|Anemone::Page| - |Once per page during crawl|
+focus_crawl|Anemone::Page|Links on that page that should be crawled|Once per page during crawl|
+after_crawl|Anemone::PageStore| - |Once after crawl is done|
 
 ### options
 
