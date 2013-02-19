@@ -35,23 +35,23 @@ A clownfish is an object that has one or more of the following instance methods:
 
 ### options
 
-Returns a Hash of Symbols to values. This is forwarded to the second argument of Anemone.crawl.
+Returns a `Hash` of `Symbol` to values. This is forwarded to the second argument of `Anemone.crawl`.
 
 ### after_crawl
 
-Takes one argument, an Anemone::PageStore. Invoked once after the crawl is done.
+Takes one argument, an `Anemone::PageStore`. Invoked once after the crawl is done.
 
 ### on_every_page
 
-Takes one argument, an Anemone::Page. Invoked once per page.
+Takes one argument, an `Anemone::Page`. Invoked once per page.
 
 ### focus_crawl
 
-Takes one argument, an Anemone::Page. Returns the links on that page that should be crawled. Invoked once per page.
+Takes one argument, an `Anemone::Page`. Returns the links on that page that should be crawled. Invoked once per page.
 
 ### skip_links_like
 
-Returns a single Regexp or Array of Regexp's. Urls matching any of these will not be crawled.
+Returns a single `Regexp` or `Array` of `Regexp`. Urls matching any of these will not be crawled.
 
 ## Contributing
 
