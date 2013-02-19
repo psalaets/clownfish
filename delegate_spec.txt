@@ -8,7 +8,9 @@ A clownfish can have
 
 #on_every_page that takes a Anemone::Page
 
+#skip_links_like that returns 1..many regexes
+
+NOT SUPPORTED YET OR EVER:
+
 #on_pages_like that returns 1..many regexs and a proc to execute when
 page matches those
-
-#skip_links_like that returns 1..many regexes
