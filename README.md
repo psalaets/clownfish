@@ -18,7 +18,7 @@ Or install it yourself as:
 
 ## Usage
 
-```
+```ruby
 require 'anemone'
 require 'clownfish'
 
@@ -26,7 +26,7 @@ clownfish = MyClownfish.new
 
 Anemone.crawl_with_clownfish(start_url, clownfish)
 
-# <query clownfish for data from crawl>
+# query clownfish for data from crawl
 ```
 
 ## Clownfish Spec
