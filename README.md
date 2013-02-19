@@ -35,33 +35,25 @@ A clownfish is an object that has one or more of the following instance methods:
 
 Note: [Anemone RDocs](http://anemone.rubyforge.org/doc/index.html)
 
-Method|Arguments|Returns|Invoked|Note
-------|---------|-------|-------|---------
-options| - |Hash of Symbol to values|Once before crawl|Return value is forwarded as the second argument to Anemone.crawl.
-skip_links_like| - |Single Regexp or Array of Regexp|Once before crawl|Urls matching any of these will not be crawled.
-on_every_page|Anemone::Page| - |Once per page during crawl|
-focus_crawl|Anemone::Page|Links on that page that should be crawled|Once per page during crawl|
-after_crawl|Anemone::PageStore| - |Once after crawl is done|
-
 ### options
 
-Returns a `Hash` of `Symbol` to values. This is forwarded as the second argument to `Anemone.crawl`.
-
-### after_crawl
-
-Takes one argument, an `Anemone::PageStore`. Invoked once after the crawl is done.
-
-### on_every_page
-
-Takes one argument, an `Anemone::Page`. Invoked once per page.
-
-### focus_crawl
-
-Takes one argument, an `Anemone::Page`. Returns the links on that page that should be crawled. Invoked once per page.
+Returns a `Hash` of `Symbol` to values. This is forwarded as the second argument to `Anemone.crawl`. Invoked once before crawl.
 
 ### skip_links_like
 
-Returns a single `Regexp` or `Array` of `Regexp`. Urls matching any of these will not be crawled.
+Returns a single `Regexp` or `Array` of `Regexp`. Urls matching any of these will not be crawled. Invoked once before crawl.
+
+### on_every_page
+
+Takes one argument, an `Anemone::Page`. Invoked once per page during crawl.
+
+### focus_crawl
+
+Takes one argument, an `Anemone::Page`. Returns the links on that page that should be crawled. Invoked once per page during crawl.
+
+### after_crawl
+
+Takes one argument, an `Anemone::PageStore`. Invoked once after crawl is done.
 
 ## Contributing
 
