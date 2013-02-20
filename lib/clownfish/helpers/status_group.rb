@@ -1,21 +1,4 @@
 module Clownfish
-  # Helper class for pairing a url with a status code.
-  class UrlStatuses
-    attr_reader :status_codes_by_url
-
-    def initialize
-      @status_codes_by_url = {}
-    end
-
-    def add_url(url, status_code)
-      @status_codes_by_url[url] = status_code
-    end
-
-    def each(&block)
-      @status_codes_by_url.each(&block)
-    end
-  end
-
   # One or more response status codes.  StatusGroups are filled with status
   # specifiers to determine what is in the group.
   #
