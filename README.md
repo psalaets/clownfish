@@ -36,8 +36,8 @@ Note: [Anemone RDocs](http://anemone.rubyforge.org/doc/index.html)
 
 ### options
 
-Returns a `Hash` of `Symbol` to values. This is forwarded as the second argument to `Anemone.crawl`
- (see [Anemone::Core::DEFAULT_OPTS](http://git.io/wFmCfA)). Invoked once before crawl.
+Returns a `Hash` of `Symbol` to values. See [Anemone::Core::DEFAULT_OPTS](http://git.io/wFmCfA) for available options.
+This is forwarded as the second argument to `Anemone.crawl`. Invoked once before crawl.
 
 ### skip_links_like
 
