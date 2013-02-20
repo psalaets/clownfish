@@ -8,3 +8,4 @@ require "clownfish/helpers/url_statuses"
 
 # clownfish impls:
 require "clownfish/links_by_page"
+require "clownfish/response_times"
