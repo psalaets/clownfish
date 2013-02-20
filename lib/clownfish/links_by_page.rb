@@ -8,6 +8,11 @@ module Clownfish
       @links_by_referer = {}
     end
 
+    def options
+      # Not looking at page bodies so don't keep them around
+      {:discard_page_bodies => true}
+    end
+
     def on_every_page(page)
       referer = page.referer.to_s
 
