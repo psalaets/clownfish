@@ -1,3 +1,5 @@
+require "anemone"
+
 module Anemone
   # Public: Starts an Anemone crawl with a clownfish.
   #
