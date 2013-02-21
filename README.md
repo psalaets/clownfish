@@ -34,7 +34,7 @@ A clownfish is an object that has one or more of the following instance methods:
 
 Note: [Anemone RDocs](http://anemone.rubyforge.org/doc/index.html)
 
-### options
+### anemone_options
 
 Returns a `Hash` of `Symbol` to values. See [Anemone::Core::DEFAULT_OPTS](http://git.io/wFmCfA) for available options.
 This is forwarded as the second argument to `Anemone.crawl`. Invoked once before crawl.

@@ -6,31 +6,31 @@ module Clownfish
       expect { Adapter.new(nil) }.to raise_error(ArgumentError)
     end
 
-    it "returns options from delegate" do
+    it "returns anemone_options from delegate" do
       delegate = double('delegate')
-      delegate.stub(:options) {{:name => 'bob'}}
+      delegate.stub(:anemone_options) {{:name => 'bob'}}
 
       adapter = Adapter.new(delegate)
 
-      adapter.options.should eq({:name => 'bob'})
+      adapter.anemone_options.should eq({:name => 'bob'})
     end
 
-    it "returns empty options if delegate has none" do
+    it "returns empty anemone_options if delegate has no options" do
       delegate = double('delegate')
-      delegate.stub(:options) {nil}
+      delegate.stub(:anemone_options) {nil}
 
       adapter = Adapter.new(delegate)
 
-      adapter.options.should eq({})
+      adapter.anemone_options.should eq({})
     end
 
-    it "returns empty options if delegate doesn't support options" do
-      # No options method
+    it "returns empty anemone_options if delegate doesn't support anemone_options" do
+      # Has no anemone_options method
       delegate = Object.new
 
       adapter = Adapter.new(delegate)
 
-      adapter.options.should eq({})
+      adapter.anemone_options.should eq({})
     end
 
     context "hooking into Anemone" do

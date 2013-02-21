@@ -8,7 +8,7 @@ module Clownfish
       @links_by_referer = {}
     end
 
-    def options
+    def anemone_options
       # Not looking at page bodies so don't keep them around
       {:discard_page_bodies => true}
     end

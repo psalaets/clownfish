@@ -12,8 +12,8 @@ module Clownfish
     # Internal: Forwards Anemone options from clownfish.
     #
     # Returns Hash of Anemone options, never nil.
-    def options
-      (@delegate.respond_to?(:options) && @delegate.options) || {}
+    def anemone_options
+      (@delegate.respond_to?(:anemone_options) && @delegate.anemone_options) || {}
     end
 
     # Internal: Connects clownfish to Anemone.
