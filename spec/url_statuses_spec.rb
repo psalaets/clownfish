@@ -12,7 +12,7 @@ module Clownfish
     end
 
     context '#each' do
-      it "yields url/code pairs to 2-arg block in add order" do
+      it "yields url/code pairs to 2-arg block" do
         statuses = UrlStatuses.new
 
         statuses.add_url('http://ok.com', 200)
@@ -21,10 +21,10 @@ module Clownfish
         pairs = []
         statuses.each { |k, v| pairs << [k, v] }
 
-        pairs.should eq([['http://ok.com', 200], ['http://huh.com', 404]])
+        pairs.should have_same_elements_as([['http://ok.com', 200], ['http://huh.com', 404]])
       end
 
-      it "yields url/code Array to 1-arg block in add order" do
+      it "yields url/code Array to 1-arg block" do
         statuses = UrlStatuses.new
 
         statuses.add_url('http://ok.com', 200)
@@ -33,7 +33,7 @@ module Clownfish
         pairs = []
         statuses.each { |p| pairs << p }
 
-        pairs.should eq([['http://ok.com', 200], ['http://huh.com', 404]])
+        pairs.should have_same_elements_as([['http://ok.com', 200], ['http://huh.com', 404]])
       end
     end
   end

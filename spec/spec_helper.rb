@@ -12,6 +12,13 @@ RSpec.configure do |config|
   config.order = 'random'
 end
 
+# Matcher for unordered equality Array
+RSpec::Matchers.define :have_same_elements_as do |expected|
+  match do |actual|
+    expected.sort == actual.sort
+  end
+end
+
 module Clownfish
   # Fake Anemone::Core to help with tests.
   class FakeAnemone
