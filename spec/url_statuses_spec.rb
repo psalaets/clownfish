@@ -14,7 +14,7 @@ module Clownfish
     it "starts off empty" do
       statuses = UrlStatuses.new
 
-      statuses.empty?.should eq(true)
+      statuses.empty?.should be_true
     end
 
     it "knows how many urls it has" do
