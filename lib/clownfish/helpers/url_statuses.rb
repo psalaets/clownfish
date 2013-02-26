@@ -22,5 +22,18 @@ module Clownfish
     def empty?
       size == 0
     end
+
+    # Public: Gets url/status code pairs that match one of the specified status
+    # codes.
+    #
+    # status_group_specifiers - One, many or an Array of status group specifiers
+    #                           as accepted by StatusGroup.new.
+    #
+    # Returns url/status pairs that match status specifiers.
+    def query(*status_group_specifiers)
+      group = StatusGroup.new(status_group_specifiers)
+
+      @status_codes_by_url.find_all { |url, code| group.include? code }
+    end
   end
 end
