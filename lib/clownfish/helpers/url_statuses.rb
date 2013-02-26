@@ -14,5 +14,13 @@ module Clownfish
     def each(&block)
       @status_codes_by_url.each(&block)
     end
+
+    def size
+      @status_codes_by_url.size
+    end
+
+    def empty?
+      size == 0
+    end
   end
 end
