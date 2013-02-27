@@ -2,35 +2,39 @@ require 'spec_helper'
 
 module Clownfish
   describe Adapter do
-    it "doesn't accept nil delegate" do
-      expect { Adapter.new(nil) }.to raise_error(ArgumentError)
+    context ".new" do
+      it "doesn't accept nil delegate" do
+        expect { Adapter.new(nil) }.to raise_error(ArgumentError)
+      end
     end
 
-    it "returns anemone_options from delegate" do
-      delegate = double('delegate')
-      delegate.stub(:anemone_options) {{:name => 'bob'}}
+    context "#anemone_options" do
+      it "forwards anemone_options from delegate" do
+        delegate = double('delegate')
+        delegate.stub(:anemone_options) {{:name => 'bob'}}
 
-      adapter = Adapter.new(delegate)
+        adapter = Adapter.new(delegate)
 
-      adapter.anemone_options.should eq({:name => 'bob'})
-    end
+        adapter.anemone_options.should eq({:name => 'bob'})
+      end
 
-    it "returns empty anemone_options if delegate has no options" do
-      delegate = double('delegate')
-      delegate.stub(:anemone_options) {nil}
+      it "returns empty Hash if delegate has no options" do
+        delegate = double('delegate')
+        delegate.stub(:anemone_options) {nil}
 
-      adapter = Adapter.new(delegate)
+        adapter = Adapter.new(delegate)
 
-      adapter.anemone_options.should eq({})
-    end
+        adapter.anemone_options.should eq({})
+      end
 
-    it "returns empty anemone_options if delegate doesn't support anemone_options" do
-      # Has no anemone_options method
-      delegate = Object.new
+      it "returns empty Hash if delegate doesn't support anemone_options" do
+        # Has no anemone_options method
+        delegate = Object.new
 
-      adapter = Adapter.new(delegate)
+        adapter = Adapter.new(delegate)
 
-      adapter.anemone_options.should eq({})
+        adapter.anemone_options.should eq({})
+      end
     end
 
     context "hooking into Anemone" do
