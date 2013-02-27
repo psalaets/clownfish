@@ -33,7 +33,7 @@ module Clownfish
         fish.report(:to => out, :status => :server_error)
 
         out.string.should =~ %r{500 http://server.com}
-        out.string.should_not =~ %r{404}
+        out.string.should_not =~ /404/
       end
 
       it "reports specified statuses when many specified" do
@@ -48,10 +48,10 @@ module Clownfish
 
         out.string.should =~ %r{200 http://links.com}
         out.string.should =~ %r{500 http://server.com}
-        out.string.should_not =~ %r{404}
+        out.string.should_not =~ /404/
       end
 
-      it "page is not in report if it won't have any links shown" do
+      it "omits page if none of its links will be shown" do
         fish = LinksByPage.new
 
         fish.on_every_page(@links)
@@ -63,6 +63,17 @@ module Clownfish
 
         out.string.should_not =~ %r{http://home.com}
         out.string.should_not =~ %r{http://links.com}
+      end
+
+      it "shows referer of links with no referer as [starting point]" do
+        fish = LinksByPage.new
+
+        fish.on_every_page(@home)
+
+        out = StringIO.new
+        fish.report(:to => out)
+
+        out.string.should =~ /\[starting point\]/
       end
     end
   end

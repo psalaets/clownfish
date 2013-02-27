@@ -17,11 +17,7 @@ module Clownfish
 
     def on_every_page(page)
       # First url in crawl has no referer
-      referer = if page.referer.nil?
-        '[starting point]'
-      else
-        page.referer.to_s
-      end
+      referer = page.referer ? page.referer.to_s : '[starting point]'
 
       @links_by_referer[referer] = UrlStatuses.new unless @links_by_referer.include? referer
 
