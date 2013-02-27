@@ -51,7 +51,7 @@ module Clownfish
         out.string.should_not =~ %r{404}
       end
 
-      it "page is not reported if it won't have any links reported" do
+      it "page is not in report if it won't have any links shown" do
         fish = LinksByPage.new
 
         fish.on_every_page(@links)
