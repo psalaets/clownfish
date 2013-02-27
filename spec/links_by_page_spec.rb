@@ -30,7 +30,7 @@ module Clownfish
         fish.on_every_page(@server)
 
         out = StringIO.new
-        fish.report(:to => out, :status_codes => 500)
+        fish.report(:to => out, :status => 500)
 
         out.string.should =~ %r{500 http://server.com}
         out.string.should_not =~ %r{404}
@@ -44,7 +44,7 @@ module Clownfish
         fish.on_every_page(@server)
 
         out = StringIO.new
-        fish.report(:to => out, :status_codes => [500, :success])
+        fish.report(:to => out, :status => [500, :success])
 
         out.string.should =~ %r{200 http://links.com}
         out.string.should =~ %r{500 http://server.com}
@@ -59,7 +59,7 @@ module Clownfish
         fish.on_every_page(@server)
 
         out = StringIO.new
-        fish.report(:to => out, :status_codes => [304])
+        fish.report(:to => out, :status => [304])
 
         out.string.should_not =~ %r{http://home.com}
         out.string.should_not =~ %r{http://links.com}

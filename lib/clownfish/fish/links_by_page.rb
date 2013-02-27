@@ -32,18 +32,18 @@ module Clownfish
     # Print links by page to stdout.
     #
     # options - Hash specifying what and how to report.
-    #           :to           - IO to print report to.  Defaults to STDOUT.
-    #           :status_codes - One or Array of status code specifiers.
-    #                           Defaults to :all.  See Clownfish::StatusGroup
-    #                           for accepted status code specifiers.
+    #           :to     - IO to print report to.  Defaults to STDOUT.
+    #           :status - One or Array of status specifiers. Defaults to :all.
+    #                     Only links with these statues will be reported.  See
+    #                     Clownfish::StatusGroup for accepted status specifiers.
     def report(options = {})
       options = {
         :to => STDOUT,
-        :status_codes => :all
+        :status => :all
       }.merge(options)
 
       out = options[:to]
-      specifiers = options[:status_codes]
+      specifiers = options[:status]
 
       @links_by_referer.each do |referer, link_statuses|
         link_status_pairs = link_statuses.query(specifiers)
