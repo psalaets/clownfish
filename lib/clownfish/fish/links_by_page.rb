@@ -4,10 +4,10 @@ module Clownfish
   class LinksByPage
     # Hash of url String to UrlStatuses.  The values are all links found on page
     # at the key.
-    attr_reader :links_by_referer
+    attr_reader :links_by_page
 
     def initialize
-      @links_by_referer = {}
+      @links_by_page = {}
     end
 
     def anemone_options
@@ -16,12 +16,12 @@ module Clownfish
     end
 
     def on_every_page(page)
-      # First url in crawl has no referer
+      # First url in crawl has no page
       referer = page.referer ? page.referer.to_s : '[starting point]'
 
-      @links_by_referer[referer] = UrlStatuses.new unless @links_by_referer.include? referer
+      @links_by_page[referer] = UrlStatuses.new unless @links_by_page.include? referer
 
-      links = @links_by_referer[referer]
+      links = @links_by_page[referer]
       links.add_url(page.url.to_s, page.code)
     end
 
@@ -37,13 +37,13 @@ module Clownfish
       out = options[:to]
       specifiers = options[:status]
 
-      @links_by_referer.each do |referer, link_statuses|
+      @links_by_page.each do |page, link_statuses|
         link_status_pairs = link_statuses.query(specifiers)
 
         unless link_status_pairs.empty?
-          out.puts "#{referer}"
-          link_status_pairs.each do |url, status_code|
-            out.puts "#{status_code} #{url}"
+          out.puts "#{page}"
+          link_status_pairs.each do |link, status|
+            out.puts "#{status} #{link}"
           end
           out.puts
         end
