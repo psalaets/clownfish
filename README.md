@@ -55,6 +55,22 @@ Takes one argument, an `Anemone::Page`. Returns the links on that page that shou
 
 Takes one argument, an `Anemone::PageStore`. Invoked once after crawl is done.
 
+## Whats Included
+
+See [wiki](https://github.com/psalaets/clownfish/wiki) for examples.
+
+### Clownfish::LinksByPage
+
+Lists every page that has links, the links and the status code when following those links.
+
+### Clownfisn::ResponseTimes
+
+Record every url and it's response time.
+
+### Clownfisn::Count
+
+Count pages.
+
 ## Contributing
 
 1. Fork it
