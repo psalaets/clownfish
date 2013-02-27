@@ -7,3 +7,4 @@ require "clownfish/helpers/url_statuses"
 
 require "clownfish/fish/links_by_page"
 require "clownfish/fish/response_times"
+require "clownfish/fish/count"
