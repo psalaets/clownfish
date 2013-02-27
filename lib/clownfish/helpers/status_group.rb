@@ -2,8 +2,8 @@ module Clownfish
   # One or more response status codes.  StatusGroups are filled with status
   # specifiers to determine what is in the group.
   #
-  # Status specifiers can be Integer status codes like 200, 404 or any of the
-  # following Symbols:
+  # Status specifiers can be Integer status codes like 200, Integer Ranges like
+  # 400..404 or any of the following Symbols:
   #   :all          - any status code
   #   :success      - 2xx
   #   :redirect     - 3xx
@@ -39,7 +39,7 @@ module Clownfish
     #
     # Returns self for chaining purposes.
     def <<(specifier)
-      @members << (ALIASES[specifier] || specifier)
+      @members << (resolve_alias(specifier) || specifier)
       self
     end
 
@@ -50,6 +50,17 @@ module Clownfish
     # Returns true if status is included, false otherwise.
     def include?(status)
       @members.any? {|m| m === status}
+    end
+
+    private
+
+    # Resolves a group alias to its Range.
+    #
+    # group_alias - Symbol representing a set of status codes.
+    #
+    # Returns Range specified by group_alias or nil if there is none.
+    def resolve_alias(group_alias)
+      ALIASES[group_alias]
     end
   end
 end
