@@ -37,11 +37,7 @@ module Clownfish
     #                     Only links with these statues will be reported.  See
     #                     Clownfish::StatusGroup for accepted status specifiers.
     def report(options = {})
-      options = {
-        :to => STDOUT,
-        :status => :all
-      }.merge(options)
-
+      options = report_options(options)
       out = options[:to]
       specifiers = options[:status]
 
@@ -56,6 +52,13 @@ module Clownfish
           out.puts
         end
       end
+    end
+
+    private
+
+    def report_options(options)
+      defaults = {:to => STDOUT, :status => :all}
+      defaults.merge(options)
     end
   end
 end
