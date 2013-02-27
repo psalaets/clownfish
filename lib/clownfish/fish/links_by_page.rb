@@ -2,6 +2,8 @@ module Clownfish
   # Clownfish that records every link on a page and the repsonse status codes
   # when the links are followed.
   class LinksByPage
+    # Hash of url String to UrlStatuses.  The values are all links found on page
+    # at the key.
     attr_reader :links_by_referer
 
     def initialize
@@ -28,13 +30,31 @@ module Clownfish
     end
 
     # Print links by page to stdout.
-    def report
+    #
+    # options - Hash specifying what and how to report.
+    #           :to           - IO to print report to.  Defaults to STDOUT.
+    #           :status_codes - One or Array of status code specifiers.
+    #                           Defaults to :all.  See Clownfish::StatusGroup
+    #                           for accepted status code specifiers.
+    def report(options = {})
+      options = {
+        :to => STDOUT,
+        :status_codes => :all
+      }.merge(options)
+
+      out = options[:to]
+      specifiers = options[:status_codes]
+
       @links_by_referer.each do |referer, link_statuses|
-        puts "#{referer}\n"
-        link_statuses.each do |url, status_code|
-          puts "#{status_code} #{url}"
+        link_status_pairs = link_statuses.query(specifiers)
+
+        unless link_status_pairs.empty?
+          out.puts "#{referer}"
+          link_status_pairs.each do |url, status_code|
+            out.puts "#{status_code} #{url}"
+          end
+          out.puts
         end
-        puts
       end
     end
   end

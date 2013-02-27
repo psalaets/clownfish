@@ -1,4 +1,5 @@
 require 'clownfish'
+require 'uri'
 
 RSpec.configure do |config|
   config.treat_symbols_as_metadata_keys_with_true_values = true
@@ -46,6 +47,24 @@ module Clownfish
 
     def skip_links_like(regexes)
       @last_skip_links_like_regexes = regexes
+    end
+  end
+
+  # Fake and minimal Anemone::Page to help with tests.
+  class FakePage
+    attr_reader :url, :referer, :code
+
+    def initialize(url, code = 200, referer = nil)
+      @url = urlify(url)
+      @referer = urlify(referer)
+      @code = code
+    end
+
+    def urlify(str)
+      return str if str.class == URI || str.nil?
+
+      str = "http://#{str}" unless str.start_with? 'http'
+      URI(str)
     end
   end
 end
