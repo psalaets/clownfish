@@ -1,6 +1,6 @@
 # Clownfish
 
-Helper gem for [Anemone](http://anemone.rubyforge.org/). Aids reusability of Anemone driver code.
+Helper for [Anemone](http://anemone.rubyforge.org/). Makes common crawls easier to repeat.
 
 ## Installation
 
@@ -32,7 +32,7 @@ Anemone.crawl_with_clownfish(start_url, clownfish)
 
 A clownfish is an object that has one or more of the following instance methods:
 
-Note: [Anemone RDocs](http://anemone.rubyforge.org/doc/index.html)
+Reference: [Anemone RDocs](http://anemone.rubyforge.org/doc/index.html)
 
 ### anemone_options
 
