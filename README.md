@@ -63,11 +63,11 @@ See [wiki](https://github.com/psalaets/clownfish/wiki) for examples.
 
 Lists every page that has links, the links and the status code when following those links.
 
-### Clownfisn::ResponseTimes
+### Clownfish::ResponseTimes
 
 Record every url and it's response time.
 
-### Clownfisn::Count
+### Clownfish::Count
 
 Count pages.
 
