@@ -19,4 +19,5 @@ Gem::Specification.new do |gem|
 
   gem.add_dependency('anemone', '~> 0.7.2')
   gem.add_development_dependency('rspec', '~> 2.12')
+  gem.add_development_dependency('rake')
 end
