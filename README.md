@@ -37,7 +37,7 @@ Reference: [Anemone RDocs](http://anemone.rubyforge.org/doc/index.html)
 ### anemone_options
 
 Returns a `Hash` of `Symbol` to values. See [Anemone::Core::DEFAULT_OPTS](http://git.io/wFmCfA) for available options.
-This is forwarded as the second argument to `Anemone.crawl`. Invoked once before crawl.
+This is forwarded as the second argument to `Anemone.crawl` ([rdoc](http://anemone.rubyforge.org/doc/classes/Anemone/Core.html)). Invoked once before crawl.
 
 ### skip_links_like
 
@@ -45,17 +45,17 @@ Returns a single `Regexp` or `Array` of `Regexp`. Urls matching any of these wil
 
 ### on_every_page
 
-Takes one argument, an `Anemone::Page`. Invoked once per page during crawl.
+Takes one argument, an `Anemone::Page` ([rdoc](http://anemone.rubyforge.org/doc/classes/Anemone/Page.html)). Invoked once per page during crawl.
 
 ### focus_crawl
 
-Takes one argument, an `Anemone::Page`. Returns the links on that page that should be crawled. Invoked once per page during crawl.
+Takes one argument, an `Anemone::Page` ([rdoc](http://anemone.rubyforge.org/doc/classes/Anemone/Page.html)). Returns the links on that page that should be crawled. Invoked once per page during crawl.
 
 ### after_crawl
 
-Takes one argument, an `Anemone::PageStore`. Invoked once after crawl is done.
+Takes one argument, an `Anemone::PageStore` ([rdoc](http://anemone.rubyforge.org/doc/classes/Anemone/PageStore.html)). Invoked once after crawl is done.
 
-## Whats Included
+## What's Included
 
 See [wiki](https://github.com/psalaets/clownfish/wiki) for examples.
 
