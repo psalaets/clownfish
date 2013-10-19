@@ -49,7 +49,7 @@ Takes one argument, an `Anemone::Page` ([rdoc](http://anemone.rubyforge.org/doc/
 
 ### focus_crawl
 
-Takes one argument, an `Anemone::Page` ([rdoc](http://anemone.rubyforge.org/doc/classes/Anemone/Page.html)). Returns the links on that page that should be crawled. Invoked once per page during crawl.
+Takes one argument, an `Anemone::Page` ([rdoc](http://anemone.rubyforge.org/doc/classes/Anemone/Page.html)). Returns the links (`Array` of `URI`) on that page that should be crawled. See `Anemone::Page#links` for a starting point. Invoked once per page during crawl.
 
 ### after_crawl
 
